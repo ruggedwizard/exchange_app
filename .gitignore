@@ -1,0 +1,9 @@
+/app/__pycache__/
+/venv/
+/__pycache__/
+
+memory.sqlite-shm
+memory.sqlite-wal
+app/memory.sqlite
+tests.py
+blockchain_codes.py
