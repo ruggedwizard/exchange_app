@@ -251,7 +251,7 @@ async def send_mail(email:List,instance:User):
                             </tr> <!-- COPY -->
                             <tr>
                                 <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                                    <p style="margin: 0;"><a href="https://dev.btcnation.oopatrick.com/api/v1/verification/?token={token}" target="_blank" style="color: #3bff69;">https://dev.btcnation.oopatrick.com/api/v1/verification/?token={token}"></a></p>
+                                    <p style="margin: 0;"><a href="http://localhost:8000/api/v1/verification/?token={token}" target="_blank" style="color: #3bff69;">http://localhost:8000/api/v1/verification/?token={token}"></a></p>
                                 </td>
                             </tr>
                             <tr>
@@ -261,7 +261,7 @@ async def send_mail(email:List,instance:User):
                             </tr>
                             <tr>
                                 <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                                    <p style="margin: 0;">Cheers,<br>BTC Nation Team</p>
+                                    <p style="margin: 0;">Cheers,<br>Exchange App/p>
                                 </td>
                             </tr>
                         </table>
@@ -284,7 +284,7 @@ async def send_mail(email:List,instance:User):
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                             <tr>
                                 <td bgcolor="#f4f4f4" align="left" style="padding: 0px 30px 30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;"> <br>
-                                    <p style="text-align: center;">&copy;BTC NATION 2022</p>
+                                    <p style="text-align: center;">&copy;david isaac</p>
                                 </td>
                             </tr>
                         </table>
@@ -295,16 +295,29 @@ async def send_mail(email:List,instance:User):
 
         </html>
     """
-    sg = sendgrid.SendGridAPIClient(api_key="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")
-    from_email = Email("davidisaac081@gmail.com")
-    to_email = To(email)
-    subject = "Email Verification"
-    content = Content("text/html",template)
-    mail = Mail(from_email, to_email, subject, content)
-    response = sg.client.mail.send.post(request_body=mail.get())
-    print(response.status_code)
-    print(response.body)
-    print(response.headers)
+    from email.mime.text import MIMEText
+    import smtplib
+
+
+    fromaddr = "davidisaac081@gmail.com"
+    toaddr = email[0]
+
+
+    # html = template
+    msg = MIMEText(template, 'html')
+    msg['From'] = fromaddr
+    msg['To'] = toaddr
+    msg['Subject'] = "Exchange App"
+
+    debug = False
+    if debug:
+        print(msg.as_string())
+    else:
+        server = smtplib.SMTP_SSL('smtp.gmail.com',465)
+        server.login("davidisaac081@gmail.com", "zsutyjkknvncqatc")
+        text = msg.as_string()
+        server.sendmail(fromaddr, toaddr, text)
+        server.quit()
 
 
 def send_reset_password(email:List,reset_code:str):
@@ -338,7 +351,7 @@ def send_reset_password(email:List,reset_code:str):
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                             <tr>
                                 <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                                    <h1 style="font-size: 20px; font-weight: 100; margin: 2;">PASSWORD RESET BTC NATION</h1> <img src=" https://europetalks.lango.io/theme/image.php/lango/theme/1585128165/images/forgot-pwd-icon" width="125" height="120" style="display: block; border: 0px;" />
+                                    <h1 style="font-size: 20px; font-weight: 100; margin: 2;">PASSWORD RESET EXCHANGE APP/h1> <img src=" https://europetalks.lango.io/theme/image.php/lango/theme/1585128165/images/forgot-pwd-icon" width="125" height="120" style="display: block; border: 0px;" />
                                 </td>
                             </tr>
                         </table>
@@ -397,7 +410,7 @@ def send_reset_password(email:List,reset_code:str):
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                             <tr>
                                 <td bgcolor="#f4f4f4" align="left" style="padding: 0px 30px 30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;"> <br>
-                                    <p style="text-align: center;">&copy;BTC NATION 2022</p>
+                                    <p style="text-align: center;">&copy; EXCHANGE APP 2022</p>
                                 </td>
                             </tr>
                         </table>
@@ -409,16 +422,30 @@ def send_reset_password(email:List,reset_code:str):
 
     
     """
-    sg = sendgrid.SendGridAPIClient(api_key="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")
-    from_email = Email("oopatrickk@gmail.com")
-    to_email = To(email)
-    subject = "Password Reset Btc-Nation"
-    content = Content("text/html",template)
-    mail = Mail(from_email, to_email, subject, content)
-    response = sg.client.mail.send.post(request_body=mail.get())
-    print(response.status_code)
-    print(response.body)
-    print(response.headers)
+    from email.mime.text import MIMEText
+    import smtplib
+
+
+    fromaddr = "davidisaac081@gmail.com"
+    toaddr = email[0]
+
+
+    html = template
+    msg = MIMEText(template, 'html')
+    msg['From'] = fromaddr
+    msg['To'] = toaddr
+    msg['Subject'] = "Exchange App"
+
+    debug = False
+    if debug:
+        print(msg.as_string())
+    else:
+        server = smtplib.SMTP_SSL('smtp.gmail.com',465)
+        server.login("davidisaac081@gmail.com", "zsutyjkknvncqatc")
+        text = msg.as_string()
+        server.sendmail(fromaddr, toaddr, text)
+        server.quit()
+
 
 # Create a bitcoin address 
 def create_bitcoin_wallet_for_user(unique_identifier:str):
@@ -480,8 +507,8 @@ def get_random_string():
 from binance.enums import * 
 from binance.client import Client
 # secret key
-BINANCE_API_KEY = 'fOSZEwwZPVdWaNLXua0a1P8FKScZNagREQ6Gi2NqadVBQ4nOKCxJS4dem4pCPNQ3'
-BINANCE_API_SECRET = '5dclGiSfjKdk8xZppEWIU6ivkBN1LBvwmweM0sTP9imWnRVLBCwZMoeV4V4ul0Dk'
+BINANCE_API_KEY = 'N73Y7LwZLzUmRn8d2Qznt024zqrJp4BCjAEefQgZmsBj72I3hcA7Nh7DabAlkcK1'
+BINANCE_API_SECRET = '7stpscCgIHFphe3ULgVRlN07zOzO9uNMlCbVz8yTqTs3S8XvwixkhGb3KSIgfpnn'
 
 client = Client(BINANCE_API_KEY, BINANCE_API_SECRET,testnet=True)
 
@@ -582,26 +609,3 @@ _bnb_usd = main_client.get_margin_price_index(symbol='BNBUSDT')
 _ltc_usd = main_client.get_margin_price_index(symbol='LTCUSDT')
 _dash_usd = main_client.get_margin_price_index(symbol='DASHUSDT')
 
-
-
-
-
-
-
-
-# # send sms to user account for 2FA authentication ======================================================================================================
-# from twilio.rest import Client
-
-# # Your Account SID from twilio.com/console
-# account_sid = "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-# # Your Auth Token from twilio.com/console
-# auth_token  = "your_auth_token"
-
-# client = Client(account_sid, auth_token)
-
-# message = client.messages.create(
-#     to="+15558675309", 
-#     from_="+19705572052",
-#     body="Hello from Python!")
-
-# print(message.sid)

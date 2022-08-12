@@ -1983,8 +1983,8 @@ async def get_trade_history(user:user_pydanticIn = Depends(get_current_user),tok
 
 register_tortoise(
     app,
-    db_url="postgres://postgres:password@localhost:5432/btc_nation",
-    # db_url = "sqlite://app/memory.sqlite",
+    # db_url="postgres://postgres:password@localhost:5432/btc_nation",
+    db_url = "sqlite://app/memory.sqlite",
     modules={"models": ["app.models"]},
     generate_schemas=True,
     add_exception_handlers=True,
