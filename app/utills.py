@@ -236,7 +236,7 @@ async def send_mail(email:List,instance:User):
                                             <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                                 <table border="0" cellspacing="0" cellpadding="0">
                                                     <tr>
-                                                        <td align="center" style="border-radius: 3px;" bgcolor="#3bff69"><a href="https://dev.btcnation.oopatrick.com/api/v1/verification/?token={token}" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #3bff69; display: inline-block;">Confirm Account</a></td>
+                                                        <td align="center" style="border-radius: 3px;" bgcolor="#3bff69"><a href=https://cryptoexchangeapi.herokuapp.com/api/v1/verification/?token={token}" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #3bff69; display: inline-block;">Confirm Account</a></td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -251,7 +251,7 @@ async def send_mail(email:List,instance:User):
                             </tr> <!-- COPY -->
                             <tr>
                                 <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                                    <p style="margin: 0;"><a href="http://localhost:8000/api/v1/verification/?token={token}" target="_blank" style="color: #3bff69;">http://localhost:8000/api/v1/verification/?token={token}"></a></p>
+                                    <p style="margin: 0;"><a href="https://cryptoexchangeapi.herokuapp.com/api/v1/verification/?token={token}" target="_blank" style="color: #3bff69;">https://cryptoexchangeapi.herokuapp.com/api/v1/verification/?token={token}"></a></p>
                                 </td>
                             </tr>
                             <tr>
