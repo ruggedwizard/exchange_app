@@ -81,7 +81,7 @@ async def get_current_user(token:str = Depends(oauth2_scheme)):
 
 @app.get('/')
 async def welcome_page():
-    return {"BTCNation API, go to the url and add /docs to view the SWAGGER API version"}
+    return {"Welcome To Exchange Api by David Isaac, go to the url and add /docs to view the SWAGGER API version"}
 
 
 
@@ -534,12 +534,14 @@ async def logout_user(token:str=Depends(get_current_token),user:user_pydanticIn=
 @app.post("/api/v1/forget-password")
 async def forget_password(request:ForgetPassword):
     result = await User.get(email=request.email)
-    print(result)
+    # print(result)
     if not result:
         return HTTPException(status_code=404,detail="User not found")
     reset_code = random_with_N_digits(6)
     await Py_codes.create(email=request.email,reset_code=reset_code)
-    send_reset_password(result.email,reset_code)
+    print(request.email)
+    send_reset_password(request.email,reset_code)
+    # print(result.email)
     return {"status":"Okay","reset code":reset_code}
 
 @app.patch("/api/v1/reset-password")

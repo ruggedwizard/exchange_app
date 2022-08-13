@@ -320,7 +320,7 @@ async def send_mail(email:List,instance:User):
         server.quit()
 
 
-def send_reset_password(email:List,reset_code:str):
+def send_reset_password(email:str,reset_code:str):
     template = f"""
         <!DOCTYPE html>
         <html>
@@ -351,7 +351,7 @@ def send_reset_password(email:List,reset_code:str):
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                             <tr>
                                 <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                                    <h1 style="font-size: 20px; font-weight: 100; margin: 2;">PASSWORD RESET EXCHANGE APP/h1> <img src=" https://europetalks.lango.io/theme/image.php/lango/theme/1585128165/images/forgot-pwd-icon" width="125" height="120" style="display: block; border: 0px;" />
+                                    <h1 style="font-size: 20px; font-weight: 100; margin: 2;">PASSWORD RESET EXCHANGE APP</h1> <img src=" https://europetalks.lango.io/theme/image.php/lango/theme/1585128165/images/forgot-pwd-icon" width="125" height="120" style="display: block; border: 0px;" />
                                 </td>
                             </tr>
                         </table>
@@ -427,14 +427,14 @@ def send_reset_password(email:List,reset_code:str):
 
 
     fromaddr = "davidisaac081@gmail.com"
-    toaddr = email[0]
+    toaddr = email
 
 
     html = template
     msg = MIMEText(template, 'html')
     msg['From'] = fromaddr
     msg['To'] = toaddr
-    msg['Subject'] = "Exchange App"
+    msg['Subject'] = "Exchange App Password Reset"
 
     debug = False
     if debug:
