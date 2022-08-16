@@ -429,7 +429,7 @@ async def create_upload_file(token:str = Depends(oauth2_scheme),file:UploadFile=
 
 # A Periodic endpoint that calls every 15 minutes upon startup of the server 
 @app.on_event("startup")
-@repeat_every(seconds=60*60)
+@repeat_every(seconds=60*3)
 async def get_live_data():
     url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
     parameters = {
@@ -510,6 +510,7 @@ async def get_live_data():
 async def get_live_price():
     # data = await get_live_data() 
     _price = await Livedata.all()
+    # print(_price)
     return {'price':_price}
              
 @app.post("/api/v1/login")
